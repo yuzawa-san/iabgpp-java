@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import com.iab.gpp.encoder.base64.AbstractBase64UrlEncoder;
 import com.iab.gpp.encoder.base64.TraditionalBase64UrlEncoder;
+import com.iab.gpp.encoder.bitstring.BitString;
 import com.iab.gpp.encoder.bitstring.BitStringEncoder;
 import com.iab.gpp.encoder.datatype.EncodableArrayOfFixedIntegerRanges;
 import com.iab.gpp.encoder.datatype.EncodableBoolean;
@@ -84,7 +85,7 @@ public class TcfEuV2CoreSegment extends AbstractLazilyEncodableSegment<Encodable
       this.fields.reset(fields);
     }
     try {
-      String bitString = base64UrlEncoder.decode(encodedString);
+      BitString bitString = base64UrlEncoder.decode(encodedString);
       bitStringEncoder.decode(bitString, getFieldNames(), fields);
     } catch (Exception e) {
       throw new DecodingException("Unable to decode TcfEuV2CoreSegment '" + encodedString + "'", e);
