@@ -1,6 +1,7 @@
 package com.iab.gpp.encoder.section;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.iab.gpp.encoder.field.UsCaV1Field;
 import com.iab.gpp.encoder.segment.EncodableSegment;
@@ -39,10 +40,7 @@ public class UsCaV1 extends AbstractLazilyEncodableSection {
 
   @Override
   protected List<EncodableSegment> initializeSegments() {
-    List<EncodableSegment> segments = new ArrayList<>();
-    segments.add(new UsCaV1CoreSegment());
-    segments.add(new UsCaV1GpcSegment());
-    return segments;
+    return Arrays.asList(new UsCaV1CoreSegment(), new UsCaV1GpcSegment());
   }
   
   @Override
@@ -69,7 +67,7 @@ public class UsCaV1 extends AbstractLazilyEncodableSection {
 
   @Override
   protected String encodeSection(List<EncodableSegment> segments) {
-    List<String> encodedSegments = new ArrayList<>();
+    List<String> encodedSegments = new ArrayList<>(segments.size());
     
     if(!segments.isEmpty()) {
       encodedSegments.add(segments.get(0).encode());

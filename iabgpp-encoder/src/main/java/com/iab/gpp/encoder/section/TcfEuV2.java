@@ -3,6 +3,7 @@ package com.iab.gpp.encoder.section;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.iab.gpp.encoder.datatype.RangeEntry;
 import com.iab.gpp.encoder.error.DecodingException;
@@ -46,12 +47,7 @@ public class TcfEuV2 extends AbstractLazilyEncodableSection {
 
   @Override
   protected List<EncodableSegment> initializeSegments() {
-    List<EncodableSegment> segments = new ArrayList<>();
-    segments.add(new TcfEuV2CoreSegment());
-    segments.add(new TcfEuV2PublisherPurposesSegment());
-    segments.add(new TcfEuV2VendorsAllowedSegment());
-    segments.add(new TcfEuV2VendorsDisclosedSegment());
-    return segments;
+    return Arrays.asList(new TcfEuV2CoreSegment(), new TcfEuV2PublisherPurposesSegment(), new TcfEuV2VendorsAllowedSegment(), new TcfEuV2VendorsDisclosedSegment());
   }
   
   @Override
@@ -99,7 +95,7 @@ public class TcfEuV2 extends AbstractLazilyEncodableSection {
 
   @Override
   public String encodeSection(List<EncodableSegment> segments) {
-    List<String> encodedSegments = new ArrayList<>();
+    List<String> encodedSegments = new ArrayList<>(segments.size());
     if (segments.size() >= 1) {
       encodedSegments.add(segments.get(0).encode());
 
