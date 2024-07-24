@@ -22,8 +22,9 @@ public abstract class AbstractEncodableSegmentedBitStringSection implements Enco
 
   @Override
   public Object getFieldValue(String fieldName) {
-    if (this.fields.containsKey(fieldName)) {
-      return this.fields.get(fieldName).getValue();
+    AbstractEncodableBitStringDataType<?> field = this.fields.get(fieldName);
+    if (field != null) {
+      return field.getValue();
     } else {
       return null;
     }
@@ -31,8 +32,9 @@ public abstract class AbstractEncodableSegmentedBitStringSection implements Enco
 
   @Override
   public void setFieldValue(String fieldName, Object value) throws InvalidFieldException {
-    if (this.fields.containsKey(fieldName)) {
-      this.fields.get(fieldName).setValue(value);
+    AbstractEncodableBitStringDataType<?> field = this.fields.get(fieldName);
+    if (field != null) {
+      field.setValue(value);
     } else {
       throw new InvalidFieldException(fieldName + " not found");
     }
@@ -48,9 +50,9 @@ public abstract class AbstractEncodableSegmentedBitStringSection implements Enco
       StringBuilder segmentBitString = new StringBuilder();
       for (int j = 0; j < this.segments[i].length; j++) {
         String fieldName = this.segments[i][j];
-        if (this.fields.containsKey(fieldName)) {
+        AbstractEncodableBitStringDataType<?> field = this.fields.get(fieldName);
+        if (field != null) {
           try {
-            AbstractEncodableBitStringDataType<?> field = this.fields.get(fieldName);
             segmentBitString.append(field.encode());
           } catch (Exception e) {
             throw new EncodingException("Unable to encode " + fieldName, e);
@@ -77,7 +79,7 @@ public abstract class AbstractEncodableSegmentedBitStringSection implements Enco
       for (int j = 0; j < segment.length; j++) {
         String fieldName = segment[j];
         AbstractEncodableBitStringDataType<?> field = this.fields.get(fieldName);
-        if (this.fields.containsKey(fieldName)) {
+        if (field != null) {
           try {
             BitString substring = field.substring(segmentBitString, index);
             field.decode(substring);

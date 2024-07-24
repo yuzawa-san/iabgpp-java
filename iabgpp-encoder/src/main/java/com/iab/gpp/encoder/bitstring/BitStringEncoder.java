@@ -23,8 +23,8 @@ public class BitStringEncoder {
     StringBuilder bitString = new StringBuilder();
     for (int i = 0; i < fieldNames.size(); i++) {
       String fieldName = fieldNames.get(i);
-      if (fields.containsKey(fieldName)) {
-        AbstractEncodableBitStringDataType<?> field = fields.get(fieldName);
+      AbstractEncodableBitStringDataType<?> field = fields.get(fieldName);
+      if (field != null) {
         bitString.append(field.encode());
       } else {
         throw new EncodingException("Field not found: '" + fieldName + "'");
@@ -38,8 +38,8 @@ public class BitStringEncoder {
     int index = 0;
     for (int i = 0; i < fieldNames.size(); i++) {
       String fieldName = fieldNames.get(i);
-      if (fields.containsKey(fieldName)) {
-        AbstractEncodableBitStringDataType<?> field = fields.get(fieldName);
+      AbstractEncodableBitStringDataType<?> field = fields.get(fieldName);
+      if (field != null) {
         try {
           BitString substring = field.substring(bitString, index);
           field.decode(substring);

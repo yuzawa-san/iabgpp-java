@@ -50,8 +50,8 @@ public class GppModel {
       this.decoded = true;
     }
     
-    EncodableSection section = null;
-    if (!this.sections.containsKey(sectionName)) {
+    EncodableSection section = this.sections.get(sectionName);
+    if (section == null) {
       if (sectionName.equals(TcfCaV1.NAME)) {
         section = new TcfCaV1();
         this.sections.put(TcfCaV1.NAME, section);
@@ -80,8 +80,6 @@ public class GppModel {
         section = new UsCtV1();
         this.sections.put(UsCtV1.NAME, section);
       }
-    } else {
-      section = this.sections.get(sectionName);
     }
 
     if (section != null) {
@@ -102,9 +100,9 @@ public class GppModel {
       this.dirty = false;
       this.decoded = true;
     }
-    
-    if (this.sections.containsKey(sectionName)) {
-      return this.sections.get(sectionName).getFieldValue(fieldName);
+    EncodableSection field = this.sections.get(sectionName);
+    if (field != null) {
+      return field.getFieldValue(fieldName);
     } else {
       return null;
     }
@@ -120,9 +118,9 @@ public class GppModel {
       this.dirty = false;
       this.decoded = true;
     }
-    
-    if (this.sections.containsKey(sectionName)) {
-      return this.sections.get(sectionName).hasField(fieldName);
+    EncodableSection field = this.sections.get(sectionName);
+    if (field != null) {
+      return field.hasField(fieldName);
     } else {
       return false;
     }
@@ -169,11 +167,7 @@ public class GppModel {
       this.decoded = true;
     }
     
-    if (this.sections.containsKey(sectionName)) {
-      return this.sections.get(sectionName);
-    } else {
-      return null;
-    }
+    return this.sections.get(sectionName);
   }
 
   public void deleteSection(int sectionId) {
@@ -187,8 +181,7 @@ public class GppModel {
       this.decoded = true;
     }
     
-    if (this.sections.containsKey(sectionName)) {
-      this.sections.remove(sectionName);
+    if (this.sections.remove(sectionName) != null) {
       this.dirty = true;
     }
   }
@@ -246,8 +239,8 @@ public class GppModel {
     List<Integer> sectionIds = new ArrayList<>();
     for (int i = 0; i < Sections.SECTION_ORDER.size(); i++) {
       String sectionName = Sections.SECTION_ORDER.get(i);
-      if (this.sections.containsKey(sectionName)) {
-        EncodableSection section = this.sections.get(sectionName);
+      EncodableSection section = this.sections.get(sectionName);
+      if (section != null) {
         sectionIds.add(section.getId());
       }
     }
@@ -259,8 +252,8 @@ public class GppModel {
     List<Integer> sectionIds = new ArrayList<>();
     for (int i = 0; i < Sections.SECTION_ORDER.size(); i++) {
       String sectionName = Sections.SECTION_ORDER.get(i);
-      if (sections.containsKey(sectionName)) {
-        EncodableSection section = sections.get(sectionName);
+      EncodableSection section = sections.get(sectionName);
+      if (section != null) {
         encodedSections.add(section.encode());
         sectionIds.add(section.getId());
       }
@@ -349,9 +342,9 @@ public class GppModel {
       this.dirty = false;
       this.decoded = true;
     }
-    
-    if (this.sections.containsKey(sectionName)) {
-      return this.sections.get(sectionName).encode();
+    EncodableSection section = this.sections.get(sectionName);
+    if (section != null) {
+      return section.encode();
     } else {
       return null;
     }
@@ -362,8 +355,8 @@ public class GppModel {
   }
 
   public void decodeSection(String sectionName, String encodedString) {
-    EncodableSection section = null;
-    if (!this.sections.containsKey(sectionName)) {
+    EncodableSection section = this.sections.get(sectionName);
+    if (section == null) {
       if (sectionName.equals(TcfEuV2.NAME)) {
         section = new TcfEuV2();
         this.sections.put(TcfEuV2.NAME, section);
@@ -392,8 +385,6 @@ public class GppModel {
         section = new UsCtV1();
         this.sections.put(UsCtV1.NAME, section);
       }
-    } else {
-      section = this.sections.get(sectionName);
     }
 
     if (section != null) {
