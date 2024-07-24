@@ -17,9 +17,9 @@ import com.iab.gpp.encoder.segment.TcfEuV2VendorsDisclosedSegment;
 
 public class TcfEuV2 extends AbstractLazilyEncodableSection {
   
-  public static int ID = 2;
-  public static int VERSION = 2;
-  public static String NAME = "tcfeuv2";
+  public static final int ID = 2;
+  public static final int VERSION = 2;
+  public static final String NAME = "tcfeuv2";
 
   public TcfEuV2() {
     super();

@@ -9,9 +9,9 @@ import com.iab.gpp.encoder.segment.UsVaV1CoreSegment;
 
 public class UsVaV1 extends AbstractLazilyEncodableSection {
 
-  public static int ID = 9;
-  public static int VERSION = 1;
-  public static String NAME = "usvav1";
+  public static final int ID = 9;
+  public static final int VERSION = 1;
+  public static final String NAME = "usvav1";
 
   public UsVaV1() {
     super();

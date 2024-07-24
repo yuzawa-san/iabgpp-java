@@ -10,9 +10,9 @@ import com.iab.gpp.encoder.segment.UsCtV1GpcSegment;
 
 public class UsCtV1 extends AbstractLazilyEncodableSection {
 
-  public static int ID = 12;
-  public static int VERSION = 1;
-  public static String NAME = "usctv1";
+  public static final int ID = 12;
+  public static final int VERSION = 1;
+  public static final String NAME = "usctv1";
 
   public UsCtV1() {
     super();

@@ -8,9 +8,9 @@ import com.iab.gpp.encoder.segment.UspV1CoreSegment;
 
 public class UspV1 extends AbstractLazilyEncodableSection {
   
-  public static int ID = 6;
-  public static int VERSION = 1;
-  public static String NAME = "uspv1";
+  public static final int ID = 6;
+  public static final int VERSION = 1;
+  public static final String NAME = "uspv1";
 
   public UspV1() {
     super();

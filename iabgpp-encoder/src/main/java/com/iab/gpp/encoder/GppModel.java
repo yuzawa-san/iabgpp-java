@@ -283,33 +283,35 @@ public class GppModel {
         @SuppressWarnings("unchecked")
         List<Integer> sectionIds = (List<Integer>) header.getFieldValue("SectionIds");
         for (int i = 0; i < sectionIds.size(); i++) {
-          if (sectionIds.get(i).equals(TcfEuV2.ID)) {
-            TcfEuV2 section = new TcfEuV2(encodedSections[i + 1]);
-            sections.put(TcfEuV2.NAME, section);
-          } else if (sectionIds.get(i).equals(TcfCaV1.ID)) {
-            TcfCaV1 section = new TcfCaV1(encodedSections[i + 1]);
-            sections.put(TcfCaV1.NAME, section);
-          } else if (sectionIds.get(i).equals(UspV1.ID)) {
-            UspV1 section = new UspV1(encodedSections[i + 1]);
-            sections.put(UspV1.NAME, section);
-          } else if (sectionIds.get(i).equals(UsCaV1.ID)) {
-            UsCaV1 section = new UsCaV1(encodedSections[i + 1]);
-            sections.put(UsCaV1.NAME, section);
-          } else if (sectionIds.get(i).equals(UsNatV1.ID)) {
-            UsNatV1 section = new UsNatV1(encodedSections[i + 1]);
-            sections.put(UsNatV1.NAME, section);
-          } else if (sectionIds.get(i).equals(UsVaV1.ID)) {
-            UsVaV1 section = new UsVaV1(encodedSections[i + 1]);
-            sections.put(UsVaV1.NAME, section);
-          } else if (sectionIds.get(i).equals(UsCoV1.ID)) {
-            UsCoV1 section = new UsCoV1(encodedSections[i + 1]);
-            sections.put(UsCoV1.NAME, section);
-          } else if (sectionIds.get(i).equals(UsUtV1.ID)) {
-            UsUtV1 section = new UsUtV1(encodedSections[i + 1]);
-            sections.put(UsUtV1.NAME, section);
-          } else if (sectionIds.get(i).equals(UsCtV1.ID)) {
-            UsCtV1 section = new UsCtV1(encodedSections[i + 1]);
-            sections.put(UsCtV1.NAME, section);
+          String section = encodedSections[i + 1];
+          switch (sectionIds.get(i)) {
+            case TcfEuV2.ID:
+              sections.put(TcfEuV2.NAME, new TcfEuV2(section));
+              break;
+            case TcfCaV1.ID:
+              sections.put(TcfCaV1.NAME, new TcfCaV1(section));
+              break;
+            case UspV1.ID:
+              sections.put(UspV1.NAME, new UspV1(section));
+              break;
+            case UsCaV1.ID:
+              sections.put(UsCaV1.NAME, new UsCaV1(section));
+              break;
+            case UsNatV1.ID:
+              sections.put(UsNatV1.NAME, new UsNatV1(section));
+              break;
+            case UsVaV1.ID:
+              sections.put(UsVaV1.NAME, new UsVaV1(section));
+              break;
+            case UsCoV1.ID:
+              sections.put(UsCoV1.NAME, new UsCoV1(section));
+              break;
+            case UsUtV1.ID:
+              sections.put(UsUtV1.NAME, new UsUtV1(section));
+              break;
+            case UsCtV1.ID:
+              sections.put(UsCtV1.NAME, new UsCtV1(section));
+              break;
           }
         }
       }

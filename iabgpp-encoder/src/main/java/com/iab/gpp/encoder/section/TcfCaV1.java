@@ -16,9 +16,9 @@ import com.iab.gpp.encoder.segment.TcfCaV1PublisherPurposesSegment;
 
 public class TcfCaV1 extends AbstractLazilyEncodableSection {
   
-  public static int ID = 5;
-  public static int VERSION = 1;
-  public static String NAME = "tcfcav1";
+  public static final int ID = 5;
+  public static final int VERSION = 1;
+  public static final String NAME = "tcfcav1";
 
   public TcfCaV1() {
     super();
