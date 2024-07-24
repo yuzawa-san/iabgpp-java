@@ -57,9 +57,8 @@ public class EncodableArrayOfFixedIntegerRanges extends AbstractEncodableBitStri
   @Override
   public void decode(BitString bitString) {
     try {
-      List<RangeEntry> entries = new ArrayList<>();
-
       int size = FixedIntegerEncoder.decode(bitString, 0, 12);
+      List<RangeEntry> entries = new ArrayList<>(size);
       int index = 12;
       for (int i = 0; i < size; i++) {
         int key = FixedIntegerEncoder.decode(bitString, index, keyBitStringLength);

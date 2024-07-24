@@ -20,7 +20,7 @@ public class OptimizedFixedRangeEncoder {
     if (rangeLength <= bitFieldLength) {
       return FixedIntegerEncoder.encode(max, 16) + BitString.TRUE_STRING + rangeBitString;
     } else {
-      List<Boolean> bits = new ArrayList<>();
+      List<Boolean> bits = new ArrayList<>(max);
       int index = 0;
       for (int i = 0; i < max; i++) {
         if (i == value.get(index) - 1) {

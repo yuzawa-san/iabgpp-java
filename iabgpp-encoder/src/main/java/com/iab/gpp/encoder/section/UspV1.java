@@ -1,6 +1,7 @@
 package com.iab.gpp.encoder.section;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import com.iab.gpp.encoder.field.UspV1Field;
 import com.iab.gpp.encoder.segment.EncodableSegment;
@@ -38,9 +39,7 @@ public class UspV1 extends AbstractLazilyEncodableSection {
 
   @Override
   protected List<EncodableSegment> initializeSegments() {
-    List<EncodableSegment> segments = new ArrayList<>();
-    segments.add(new UspV1CoreSegment());
-    return segments;
+    return Collections.singletonList(new UspV1CoreSegment());
   }
   
   @Override
@@ -62,7 +61,7 @@ public class UspV1 extends AbstractLazilyEncodableSection {
 
   @Override
   protected String encodeSection(List<EncodableSegment> segments) {
-    List<String> encodedSegments = new ArrayList<>();
+    List<String> encodedSegments = new ArrayList<>(segments.size());
     for(EncodableSegment segment : segments) {
       encodedSegments.add(segment.encode());
     }

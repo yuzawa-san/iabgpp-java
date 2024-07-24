@@ -49,8 +49,8 @@ public class FibonacciIntegerRangeEncoder {
       throw new DecodingException("Undecodable FibonacciIntegerRange '" + bitString + "'");
     }
 
-    List<Integer> value = new ArrayList<>();
     int count = FixedIntegerEncoder.decode(bitString, 0, 12);
+    List<Integer> value = new ArrayList<>(count);
 
     int offset = 0;
     int startIndex = 12;

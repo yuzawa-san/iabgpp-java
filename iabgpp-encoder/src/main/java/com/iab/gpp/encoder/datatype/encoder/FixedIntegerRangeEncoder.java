@@ -43,8 +43,8 @@ public class FixedIntegerRangeEncoder {
       throw new DecodingException("Undecodable FixedIntegerRange '" + bitString + "'");
     }
 
-    List<Integer> value = new ArrayList<>();
     int count = FixedIntegerEncoder.decode(bitString, 0, 12);
+    List<Integer> value = new ArrayList<>(count);
     int startIndex = 12;
     for (int i = 0; i < count; i++) {
       boolean group = BooleanEncoder.decode(bitString, startIndex, 1);

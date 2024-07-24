@@ -235,9 +235,9 @@ public class GppModel {
       this.dirty = false;
       this.decoded = true;
     }
-    
-    List<Integer> sectionIds = new ArrayList<>();
-    for (int i = 0; i < Sections.SECTION_ORDER.size(); i++) {
+    int length = Sections.SECTION_ORDER.size();
+    List<Integer> sectionIds = new ArrayList<>(length);
+    for (int i = 0; i < length; i++) {
       String sectionName = Sections.SECTION_ORDER.get(i);
       EncodableSection section = this.sections.get(sectionName);
       if (section != null) {
@@ -248,9 +248,10 @@ public class GppModel {
   }
 
   protected String encodeModel(Map<String, EncodableSection> sections) {
-    List<String> encodedSections = new ArrayList<>();
-    List<Integer> sectionIds = new ArrayList<>();
-    for (int i = 0; i < Sections.SECTION_ORDER.size(); i++) {
+    int length = Sections.SECTION_ORDER.size();
+    List<String> encodedSections = new ArrayList<>(length);
+    List<Integer> sectionIds = new ArrayList<>(length);
+    for (int i = 0; i < length; i++) {
       String sectionName = Sections.SECTION_ORDER.get(i);
       EncodableSection section = sections.get(sectionName);
       if (section != null) {

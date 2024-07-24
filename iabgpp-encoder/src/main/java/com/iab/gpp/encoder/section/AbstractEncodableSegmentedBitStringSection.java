@@ -45,8 +45,9 @@ public abstract class AbstractEncodableSegmentedBitStringSection implements Enco
   }
 
   public List<String> encodeSegmentsToBitStrings() throws EncodingException {
-    List<String> segmentBitStrings = new ArrayList<>();
-    for (int i = 0; i < this.segments.length; i++) {
+    int length = this.segments.length;
+    List<String> segmentBitStrings = new ArrayList<>(length);
+    for (int i = 0; i < length; i++) {
       StringBuilder segmentBitString = new StringBuilder();
       for (int j = 0; j < this.segments[i].length; j++) {
         String fieldName = this.segments[i][j];
