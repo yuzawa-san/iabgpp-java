@@ -9,9 +9,9 @@ import com.iab.gpp.encoder.segment.HeaderV1CoreSegment;
 
 public class HeaderV1 extends AbstractLazilyEncodableSection {
   
-  public static int ID = 3;
-  public static int VERSION = 1;
-  public static String NAME = "header";
+  public static final int ID = 3;
+  public static final int VERSION = 1;
+  public static final String NAME = "header";
 
   public HeaderV1() {
     super();
