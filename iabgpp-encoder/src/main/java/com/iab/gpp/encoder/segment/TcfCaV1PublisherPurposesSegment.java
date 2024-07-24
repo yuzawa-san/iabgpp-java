@@ -1,7 +1,6 @@
 package com.iab.gpp.encoder.segment;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.IntSupplier;
 import com.iab.gpp.encoder.base64.AbstractBase64UrlEncoder;
@@ -38,12 +37,8 @@ public class TcfCaV1PublisherPurposesSegment extends AbstractLazilyEncodableSegm
   protected EncodableBitStringFields initializeFields() {
     EncodableBitStringFields fields = new EncodableBitStringFields();
     fields.put(TcfCaV1Field.PUB_PURPOSES_SEGMENT_TYPE, new EncodableFixedInteger(3, 3));
-    fields.put(TcfCaV1Field.PUB_PURPOSES_EXPRESS_CONSENT,
-        new EncodableFixedBitfield(Arrays.asList(false, false, false, false, false, false, false, false, false, false,
-            false, false, false, false, false, false, false, false, false, false, false, false, false, false)));
-    fields.put(TcfCaV1Field.PUB_PURPOSES_IMPLIED_CONSENT,
-        new EncodableFixedBitfield(Arrays.asList(false, false, false, false, false, false, false, false, false, false,
-            false, false, false, false, false, false, false, false, false, false, false, false, false, false)));
+    fields.put(TcfCaV1Field.PUB_PURPOSES_EXPRESS_CONSENT, new EncodableFixedBitfield(24));
+    fields.put(TcfCaV1Field.PUB_PURPOSES_IMPLIED_CONSENT, new EncodableFixedBitfield(24));
 
     EncodableFixedInteger numCustomPurposes = new EncodableFixedInteger(6, 0);
     fields.put(TcfCaV1Field.NUM_CUSTOM_PURPOSES, numCustomPurposes);

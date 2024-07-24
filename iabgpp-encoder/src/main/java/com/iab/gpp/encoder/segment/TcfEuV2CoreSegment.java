@@ -2,7 +2,6 @@ package com.iab.gpp.encoder.segment;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import com.iab.gpp.encoder.base64.AbstractBase64UrlEncoder;
 import com.iab.gpp.encoder.base64.TraditionalBase64UrlEncoder;
@@ -55,14 +54,9 @@ public class TcfEuV2CoreSegment extends AbstractLazilyEncodableSegment<Encodable
     fields.put(TcfEuV2Field.POLICY_VERSION, new EncodableFixedInteger(6, 2));
     fields.put(TcfEuV2Field.IS_SERVICE_SPECIFIC, new EncodableBoolean(false));
     fields.put(TcfEuV2Field.USE_NON_STANDARD_STACKS, new EncodableBoolean(false));
-    fields.put(TcfEuV2Field.SPECIAL_FEATURE_OPTINS, new EncodableFixedBitfield(
-        Arrays.asList(false, false, false, false, false, false, false, false, false, false, false, false)));
-    fields.put(TcfEuV2Field.PURPOSE_CONSENTS,
-        new EncodableFixedBitfield(Arrays.asList(false, false, false, false, false, false, false, false, false, false,
-            false, false, false, false, false, false, false, false, false, false, false, false, false, false)));
-    fields.put(TcfEuV2Field.PURPOSE_LEGITIMATE_INTERESTS,
-        new EncodableFixedBitfield(Arrays.asList(false, false, false, false, false, false, false, false, false, false,
-            false, false, false, false, false, false, false, false, false, false, false, false, false, false)));
+    fields.put(TcfEuV2Field.SPECIAL_FEATURE_OPTINS, new EncodableFixedBitfield(12));
+    fields.put(TcfEuV2Field.PURPOSE_CONSENTS, new EncodableFixedBitfield(24));
+    fields.put(TcfEuV2Field.PURPOSE_LEGITIMATE_INTERESTS, new EncodableFixedBitfield(24));
     fields.put(TcfEuV2Field.PURPOSE_ONE_TREATMENT, new EncodableBoolean(false));
     fields.put(TcfEuV2Field.PUBLISHER_COUNTRY_CODE, new EncodableFixedString(2, "AA"));
     fields.put(TcfEuV2Field.VENDOR_CONSENTS, new EncodableOptimizedFixedRange(new ArrayList<>()));

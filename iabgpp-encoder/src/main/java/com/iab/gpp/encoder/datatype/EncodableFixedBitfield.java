@@ -12,20 +12,15 @@ public class EncodableFixedBitfield extends AbstractEncodableBitStringDataType<L
 
   private int numElements;
 
-  protected EncodableFixedBitfield(int numElements) {
+  public EncodableFixedBitfield(int numElements) {
     super(true);
     this.numElements = numElements;
+    this.value = BitString.empty(numElements);
   }
 
   protected EncodableFixedBitfield(int numElements, boolean hardFailIfMissing) {
     super(hardFailIfMissing);
     this.numElements = numElements;
-  }
-
-  public EncodableFixedBitfield(List<Boolean> value) {
-    super(true);
-    this.numElements = value.size();
-    setValue(value);
   }
 
   public EncodableFixedBitfield(List<Boolean> value, boolean hardFailIfMissing) {

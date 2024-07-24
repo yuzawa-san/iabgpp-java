@@ -21,6 +21,10 @@ public final class BitString extends AbstractList<Boolean> {
     this.to = to;
   }
 
+  public static final BitString empty(int size) {
+    return new BitString(new BitSet(size), 0, size);
+  }
+
   public static final BitString of(String str) {
     int length = str.length();
     BitStringBuilder builder = new BitStringBuilder(length);

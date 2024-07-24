@@ -2,7 +2,6 @@ package com.iab.gpp.encoder.segment;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import com.iab.gpp.encoder.base64.AbstractBase64UrlEncoder;
 import com.iab.gpp.encoder.base64.CompressedBase64UrlEncoder;
@@ -54,14 +53,9 @@ public class TcfCaV1CoreSegment extends AbstractLazilyEncodableSegment<Encodable
     fields.put(TcfCaV1Field.VENDOR_LIST_VERSION, new EncodableFixedInteger(12, 0));
     fields.put(TcfCaV1Field.TCF_POLICY_VERSION, new EncodableFixedInteger(6, 2));
     fields.put(TcfCaV1Field.USE_NON_STANDARD_STACKS, new EncodableBoolean(false));
-    fields.put(TcfCaV1Field.SPECIAL_FEATURE_EXPRESS_CONSENT, new EncodableFixedBitfield(
-        Arrays.asList(false, false, false, false, false, false, false, false, false, false, false, false)));
-    fields.put(TcfCaV1Field.PURPOSES_EXPRESS_CONSENT,
-        new EncodableFixedBitfield(Arrays.asList(false, false, false, false, false, false, false, false, false, false,
-            false, false, false, false, false, false, false, false, false, false, false, false, false, false)));
-    fields.put(TcfCaV1Field.PURPOSES_IMPLIED_CONSENT,
-        new EncodableFixedBitfield(Arrays.asList(false, false, false, false, false, false, false, false, false, false,
-            false, false, false, false, false, false, false, false, false, false, false, false, false, false)));
+    fields.put(TcfCaV1Field.SPECIAL_FEATURE_EXPRESS_CONSENT, new EncodableFixedBitfield(12));
+    fields.put(TcfCaV1Field.PURPOSES_EXPRESS_CONSENT, new EncodableFixedBitfield(24));
+    fields.put(TcfCaV1Field.PURPOSES_IMPLIED_CONSENT, new EncodableFixedBitfield(24));
     fields.put(TcfCaV1Field.VENDOR_EXPRESS_CONSENT, new EncodableOptimizedFixedRange(new ArrayList<>()));
     fields.put(TcfCaV1Field.VENDOR_IMPLIED_CONSENT, new EncodableOptimizedFixedRange(new ArrayList<>()));
     fields.put(TcfCaV1Field.PUB_RESTRICTIONS, new EncodableArrayOfFixedIntegerRanges(6, 2, new ArrayList<>(), false));

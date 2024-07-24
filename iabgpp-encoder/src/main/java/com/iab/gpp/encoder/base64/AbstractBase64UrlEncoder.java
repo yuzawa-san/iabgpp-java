@@ -1,7 +1,5 @@
 package com.iab.gpp.encoder.base64;
 
-import java.util.regex.Pattern;
-
 import com.iab.gpp.encoder.bitstring.BitString;
 import com.iab.gpp.encoder.bitstring.BitStringBuilder;
 import com.iab.gpp.encoder.datatype.encoder.FixedIntegerEncoder;
