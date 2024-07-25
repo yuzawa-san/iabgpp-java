@@ -47,7 +47,7 @@ public class FixedIntegerListEncoder {
     List<Integer> value = new ArrayList<>(numElements);
     length = bitString.length();
     for (int i = 0; i < length; i += elementBitStringLength) {
-      value.add(FixedIntegerEncoder.decode(bitString, i, elementBitStringLength));
+      value.add(IntegerCache.valueOf(FixedIntegerEncoder.decode(bitString, i, elementBitStringLength)));
     }
 
     while (value.size() < numElements) {

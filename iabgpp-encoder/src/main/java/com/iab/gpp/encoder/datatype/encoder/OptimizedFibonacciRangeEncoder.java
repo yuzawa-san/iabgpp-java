@@ -47,7 +47,7 @@ public class OptimizedFibonacciRangeEncoder {
       List<Integer> value = new ArrayList<>(length);
       for (int i = 0; i < length; i++) {
         if (bits.getValue(i)) {
-          value.add(i + 1);
+          value.add(IntegerCache.valueOf(i + 1));
         }
       }
       return value;

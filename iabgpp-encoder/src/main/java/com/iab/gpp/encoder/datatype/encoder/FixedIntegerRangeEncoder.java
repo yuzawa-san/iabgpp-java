@@ -58,11 +58,11 @@ public class FixedIntegerRangeEncoder {
         startIndex += 16;
 
         for (int j = start; j <= end; j++) {
-          value.add(j);
+          value.add(IntegerCache.valueOf(j));
         }
       } else {
         int val = FixedIntegerEncoder.decode(bitString, startIndex, 16);
-        value.add(val);
+        value.add(IntegerCache.valueOf(val));
         startIndex += 16;
       }
     }

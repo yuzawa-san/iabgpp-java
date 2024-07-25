@@ -70,13 +70,13 @@ public class FibonacciIntegerRangeEncoder {
         startIndex = index + 2;
 
         for (int j = start; j <= end; j++) {
-          value.add(j);
+          value.add(IntegerCache.valueOf(j));
         }
       } else {
         int index = bitString.indexOf("11", startIndex);
         int val = FibonacciIntegerEncoder.decode(bitString.substring(startIndex, index + 2)) + offset;
         offset = val;
-        value.add(val);
+        value.add(IntegerCache.valueOf(val));
         startIndex = index + 2;
       }
     }
