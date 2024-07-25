@@ -283,8 +283,8 @@ public class GppModel {
   
         @SuppressWarnings("unchecked")
         List<Integer> sectionIds = (List<Integer>) header.getFieldValue("SectionIds");
-        for (int i = 0; i < sectionIds.size(); i++) {
-          String section = encodedSections[i + 1];
+        for (int i = 1; i < sectionIds.size(); i++) {
+          String section = encodedSections[i];
           switch (sectionIds.get(i)) {
             case TcfEuV2.ID:
               sections.put(TcfEuV2.NAME, new TcfEuV2(section));
