@@ -9,6 +9,8 @@ import com.iab.gpp.encoder.error.DecodingException;
 
 public class DatetimeEncoder {
 
+  public static final ZoneId UTC = ZoneId.of("UTC");
+
   public static String encode(ZonedDateTime value) {
     if (value != null) {
       return FixedLongEncoder.encode(value.toInstant().toEpochMilli() / 100, 36);
@@ -22,6 +24,6 @@ public class DatetimeEncoder {
       throw new DecodingException("Undecodable Datetime '" + bitString + "'");
     }
 
-    return ZonedDateTime.ofInstant(Instant.ofEpochMilli(FixedLongEncoder.decode(bitString) * 100L), ZoneId.of("UTC"));
+    return ZonedDateTime.ofInstant(Instant.ofEpochMilli(FixedLongEncoder.decode(bitString) * 100L), UTC);
   }
 }

@@ -1,11 +1,11 @@
 package com.iab.gpp.encoder.section;
 
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.iab.gpp.encoder.datatype.RangeEntry;
+import com.iab.gpp.encoder.datatype.encoder.DatetimeEncoder;
 import com.iab.gpp.encoder.error.DecodingException;
 import com.iab.gpp.encoder.error.InvalidFieldException;
 import com.iab.gpp.encoder.field.TcfEuV2Field;
@@ -123,7 +123,7 @@ public class TcfEuV2 extends AbstractLazilyEncodableSection {
     super.setFieldValue(fieldName, value);
 
     if (!fieldName.equals(TcfEuV2Field.CREATED) && !fieldName.equals(TcfEuV2Field.LAST_UPDATED)) {
-      ZonedDateTime utcDateTime = ZonedDateTime.now(ZoneId.of("UTC"));
+      ZonedDateTime utcDateTime = ZonedDateTime.now(DatetimeEncoder.UTC);
 
       super.setFieldValue(TcfEuV2Field.CREATED, utcDateTime);
       super.setFieldValue(TcfEuV2Field.LAST_UPDATED, utcDateTime);
