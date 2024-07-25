@@ -9,7 +9,7 @@ import com.iab.gpp.encoder.field.EncodableBitStringFields;
 
 public class BitStringEncoder {
 
-  private static BitStringEncoder instance = new BitStringEncoder();
+  private static final BitStringEncoder instance = new BitStringEncoder();
   
   private BitStringEncoder() {
     
