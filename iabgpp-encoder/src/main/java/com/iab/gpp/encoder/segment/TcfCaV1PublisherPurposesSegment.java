@@ -53,10 +53,10 @@ public class TcfCaV1PublisherPurposesSegment extends AbstractLazilyEncodableSegm
     };
 
     fields.put(TcfCaV1Field.CUSTOM_PURPOSES_EXPRESS_CONSENT,
-        new EncodableFlexibleBitfield(getLengthSupplier, new ArrayList<>()));
+        new EncodableFlexibleBitfield(getLengthSupplier, new ArrayList<>(0)));
 
     fields.put(TcfCaV1Field.CUSTOM_PURPOSES_IMPLIED_CONSENT,
-        new EncodableFlexibleBitfield(getLengthSupplier, new ArrayList<>()));
+        new EncodableFlexibleBitfield(getLengthSupplier, new ArrayList<>(0)));
     return fields;
   }
 
