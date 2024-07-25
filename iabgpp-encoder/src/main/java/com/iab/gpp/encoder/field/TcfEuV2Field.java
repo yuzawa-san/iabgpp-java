@@ -71,14 +71,14 @@ public class TcfEuV2Field {
   //@formatter:on
   
   //@formatter:off
-  public static List<String> TCFEUV2_VENDORS_ALLOWED_SEGMENT_FIELD_NAMES = Arrays.asList(new String[] {
+  public static final List<String> TCFEUV2_VENDORS_ALLOWED_SEGMENT_FIELD_NAMES = Arrays.asList(new String[] {
       TcfEuV2Field.VENDORS_ALLOWED_SEGMENT_TYPE,
       TcfEuV2Field.VENDORS_ALLOWED,
   });
   //@formatter:on
   
   //@formatter:off
-  public static List<String> TCFEUV2_VENDORS_DISCLOSED_SEGMENT_FIELD_NAMES = Arrays.asList(new String[] {
+  public static final List<String> TCFEUV2_VENDORS_DISCLOSED_SEGMENT_FIELD_NAMES = Arrays.asList(new String[] {
       TcfEuV2Field.VENDORS_DISCLOSED_SEGMENT_TYPE,
       TcfEuV2Field.VENDORS_DISCLOSED,
   });
