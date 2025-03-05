@@ -39,8 +39,13 @@ public class FibonacciIntegerEncoder {
   }
 
   public static int decode(BitString bitString) throws DecodingException {
-    int length = bitString.length();
-    if (length < 2 || bitString.indexOf("11") != length - 2) {
+    return decode(bitString, 0, bitString.length());
+  }
+
+  public static int decode(BitString bitString, int fromIndex, int length) throws DecodingException {
+    // must end with "11"
+    int end = fromIndex + length;
+    if (length < 2 || !bitString.get(end - 2) || !bitString.get(end - 1)) {
       throw new DecodingException("Undecodable FibonacciInteger '" + bitString + "'");
     }
 
@@ -57,8 +62,9 @@ public class FibonacciIntegerEncoder {
       }
     }
 
-    for (int i = 0; i < length - 1; i++) {
-      if (bitString.getValue(i)) {
+    int limit = length - 1;
+    for (int i = 0; i < limit; i++) {
+      if (bitString.getValue(fromIndex + i)) {
         value += fib.get(i);
       }
     }
