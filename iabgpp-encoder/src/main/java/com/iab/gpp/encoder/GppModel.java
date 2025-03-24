@@ -19,10 +19,16 @@ import com.iab.gpp.encoder.section.TcfEuV2;
 import com.iab.gpp.encoder.section.UsCa;
 import com.iab.gpp.encoder.section.UsCo;
 import com.iab.gpp.encoder.section.UsCt;
+import com.iab.gpp.encoder.section.UsDe;
 import com.iab.gpp.encoder.section.UsFl;
+import com.iab.gpp.encoder.section.UsIa;
 import com.iab.gpp.encoder.section.UsMt;
 import com.iab.gpp.encoder.section.UsNat;
+import com.iab.gpp.encoder.section.UsNe;
+import com.iab.gpp.encoder.section.UsNh;
+import com.iab.gpp.encoder.section.UsNj;
 import com.iab.gpp.encoder.section.UsOr;
+import com.iab.gpp.encoder.section.UsTn;
 import com.iab.gpp.encoder.section.UsTx;
 import com.iab.gpp.encoder.section.UsUt;
 import com.iab.gpp.encoder.section.UsVa;
@@ -32,10 +38,10 @@ public class GppModel {
   private Map<String, EncodableSection> sections = new HashMap<>();
 
   private String encodedString;
-  
+
   private boolean dirty = false;
   private boolean decoded = true;
-  
+
   public GppModel() {
 
   }
@@ -90,6 +96,24 @@ public class GppModel {
           break;
         case UsTx.NAME:
           section = new UsTx();
+          break;
+        case UsDe.NAME:
+          section = new UsDe();
+          break;
+        case UsIa.NAME:
+          section = new UsIa();
+          break;
+        case UsNe.NAME:
+          section = new UsNe();
+          break;
+        case UsNh.NAME:
+          section = new UsNh();
+          break;
+        case UsNj.NAME:
+          section = new UsNj();
+          break;
+        case UsTn.NAME:
+          section = new UsTn();
           break;
       }
       if (section != null) {
@@ -160,7 +184,7 @@ public class GppModel {
       this.dirty = false;
       this.decoded = true;
     }
-    
+
     return this.sections.containsKey(sectionName);
   }
 
@@ -170,7 +194,7 @@ public class GppModel {
       this.dirty = false;
       this.decoded = true;
     }
-    
+
     HeaderV1 header = new HeaderV1();
     try {
       header.setFieldValue("SectionIds", this.getSectionIds());
@@ -190,7 +214,6 @@ public class GppModel {
       this.dirty = false;
       this.decoded = true;
     }
-    
     return this.sections.get(sectionName);
   }
 
@@ -204,7 +227,6 @@ public class GppModel {
       this.dirty = false;
       this.decoded = true;
     }
-    
     if (this.sections.remove(sectionName) != null) {
       this.dirty = true;
     }
@@ -252,21 +274,45 @@ public class GppModel {
   public UsCt getUsCtSection() {
     return (UsCt) getSection(UsCt.NAME);
   }
-  
+
   public UsFl getUsFlSection() {
     return (UsFl) getSection(UsFl.NAME);
   }
-  
+
   public UsMt getUsMtSection() {
     return (UsMt) getSection(UsMt.NAME);
   }
-  
+
   public UsOr getUsOrSection() {
     return (UsOr) getSection(UsOr.NAME);
   }
-  
+
   public UsTx getUsTxSection() {
     return (UsTx) getSection(UsTx.NAME);
+  }
+
+  public UsDe getUsDeSection() {
+    return (UsDe) getSection(UsDe.NAME);
+  }
+
+  public UsIa getUsIaSection() {
+    return (UsIa) getSection(UsIa.NAME);
+  }
+
+  public UsNe getUsNeSection() {
+    return (UsNe) getSection(UsNe.NAME);
+  }
+
+  public UsNh getUsNhSection() {
+    return (UsNh) getSection(UsNh.NAME);
+  }
+
+  public UsNj getUsNjSection() {
+    return (UsNj) getSection(UsNj.NAME);
+  }
+
+  public UsTn getUsTnSection() {
+    return (UsTn) getSection(UsTn.NAME);
   }
 
   public List<Integer> getSectionIds() {
@@ -313,14 +359,14 @@ public class GppModel {
   }
 
   protected Map<String, EncodableSection> decodeModel(String str) {
-    if(str == null || str.isEmpty() ||  str.startsWith("D")) {
+    if (str == null || str.isEmpty() || str.startsWith("D")) {
       Map<String, EncodableSection> sections = new HashMap<>();
       
       if(str != null && !str.isEmpty()) {
         List<CharSequence> encodedSections = SlicedCharSequence.split(str, '~');
         HeaderV1 header = new HeaderV1(encodedSections.get(0));
         sections.put(HeaderV1.NAME, header);
-  
+
         @SuppressWarnings("unchecked")
         List<Integer> sectionIds = (List<Integer>) header.getFieldValue("SectionIds");
         for (int i = 0; i < sectionIds.size(); i++) {
@@ -365,12 +411,30 @@ public class GppModel {
             case UsTx.ID:
               sections.put(UsTx.NAME, new UsTx(section));
               break;
+            case UsDe.ID:
+              sections.put(UsDe.NAME, new UsDe(section));
+              break;
+            case UsIa.ID:
+              sections.put(UsIa.NAME, new UsIa(section));
+              break;
+            case UsNe.ID:
+              sections.put(UsNe.NAME, new UsNe(section));
+              break;
+            case UsNh.ID:
+              sections.put(UsNh.NAME, new UsNh(section));
+              break;
+            case UsNj.ID:
+              sections.put(UsNj.NAME, new UsNj(section));
+              break;
+            case UsTn.ID:
+              sections.put(UsTn.NAME, new UsTn(section));
+              break;
           }
         }
       }
-      
+
       return sections;
-    } else if(str.startsWith("C")) {
+    } else if (str.startsWith("C")) {
       // old tcfeu only string
       Map<String, EncodableSection> sections = new HashMap<>();
 
@@ -415,7 +479,7 @@ public class GppModel {
       section.decode(encodedString);
     }
   }
-  
+
   public String encode() {
     if (this.encodedString == null || this.encodedString.isEmpty() || this.dirty) {
       this.encodedString = encodeModel(this.sections);
@@ -425,12 +489,12 @@ public class GppModel {
 
     return this.encodedString;
   }
-  
+
   public void decode(String encodedString) {
     this.encodedString = encodedString;
     this.dirty = false;
     this.decoded = false;
   }
-  
-  
+
+
 }

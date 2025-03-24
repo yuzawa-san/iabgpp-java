@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import com.iab.gpp.encoder.base64.AbstractBase64UrlEncoder;
 import com.iab.gpp.encoder.base64.CompressedBase64UrlEncoder;
 import com.iab.gpp.encoder.bitstring.BitString;
+import com.iab.gpp.encoder.bitstring.BitStringBuilder;
 import com.iab.gpp.encoder.bitstring.BitStringEncoder;
 import com.iab.gpp.encoder.datatype.EncodableFixedInteger;
 import com.iab.gpp.encoder.datatype.EncodableFixedIntegerList;
@@ -68,9 +69,9 @@ public class UsNatCoreSegment extends AbstractLazilyEncodableSegment<EncodableBi
     fields.put(UsNatField.TARGETED_ADVERTISING_OPT_OUT,
         new EncodableFixedInteger(2, 0).withValidator(nullableBooleanAsTwoBitIntegerValidator));
     fields.put(UsNatField.SENSITIVE_DATA_PROCESSING,
-        new EncodableFixedIntegerList(2, Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
+        new EncodableFixedIntegerList(2, Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
             .withValidator(nullableBooleanAsTwoBitIntegerListValidator));
-    fields.put(UsNatField.KNOWN_CHILD_SENSITIVE_DATA_CONSENTS, new EncodableFixedIntegerList(2, Arrays.asList(0, 0))
+    fields.put(UsNatField.KNOWN_CHILD_SENSITIVE_DATA_CONSENTS, new EncodableFixedIntegerList(2, Arrays.asList(0, 0, 0))
         .withValidator(nullableBooleanAsTwoBitIntegerListValidator));
     fields.put(UsNatField.PERSONAL_DATA_CONSENTS,
         new EncodableFixedInteger(2, 0).withValidator(nullableBooleanAsTwoBitIntegerValidator));
@@ -97,6 +98,20 @@ public class UsNatCoreSegment extends AbstractLazilyEncodableSegment<EncodableBi
     }
     try {
       BitString bitString = base64UrlEncoder.decode(encodedString);
+
+      // Necessary to maintain backwards compatibility when sensitive data processing changed from a
+      // length of 12 to 16 and known child sensitive data consents changed from a length of 2 to 3 in the
+      // DE, IA, NE, NH, NJ, TN release
+      if (bitString.length() == 66) {
+        BitStringBuilder builder = new BitStringBuilder();
+        builder.append(bitString.substring(0, 48));
+        builder.append(BitString.of("00000000"));
+        builder.append(bitString.substring(48, 52));
+        builder.append(BitString.of("00"));
+        builder.append(bitString.substring(52, 62));
+        bitString = builder.build();
+      }
+
       bitStringEncoder.decode(bitString, getFieldNames(), fields);
     } catch (Exception e) {
       throw new DecodingException("Unable to decode UsNatCoreSegment '" + encodedString + "'", e);
@@ -116,8 +131,7 @@ public class UsNatCoreSegment extends AbstractLazilyEncodableSegment<EncodableBi
         ((EncodableFixedInteger) fields.get(UsNatField.TARGETED_ADVERTISING_OPT_OUT)).getValue();
     Integer mspaServiceProviderMode =
         ((EncodableFixedInteger) fields.get(UsNatField.MSPA_SERVICE_PROVIDER_MODE)).getValue();
-    Integer mspaOptOutOptionMode =
-        ((EncodableFixedInteger) fields.get(UsNatField.MSPA_OPT_OUT_OPTION_MODE)).getValue();
+    Integer mspaOptOutOptionMode = ((EncodableFixedInteger) fields.get(UsNatField.MSPA_OPT_OUT_OPTION_MODE)).getValue();
     Integer sensitiveDataLimtUserNotice =
         ((EncodableFixedInteger) fields.get(UsNatField.SENSITIVE_DATA_LIMIT_USE_NOTICE)).getValue();
 
