@@ -475,6 +475,7 @@ public class GppModel {
     EncodableSection section = getOrCreateSection(sectionName);
     if (section != null) {
       section.decode(encodedString);
+      this.dirty = true;
     }
   }
 
