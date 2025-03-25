@@ -1,6 +1,7 @@
 package com.iab.gpp.encoder.datatype.encoder;
 
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.Collections;
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class FibonacciIntegerRangeEncoder {
     }
 
     int count = FixedIntegerEncoder.decode(bitString, 0, 12);
-    List<Integer> value = new ArrayList<>(count);
+    BitSet value = new BitSet();
 
     int offset = 0;
     int startIndex = 12;
@@ -72,18 +73,16 @@ public class FibonacciIntegerRangeEncoder {
         offset = end;
         startIndex = index + 2;
 
-        for (int j = start; j <= end; j++) {
-          value.add(IntegerCache.valueOf(j));
-        }
+        value.set(start, end + 1);
       } else {
         int index = FibonacciIntegerEncoder.indexOfEndTag(bitString, startIndex);
         int val = FibonacciIntegerEncoder.decode(bitString, startIndex, index + 2 - startIndex) + offset;
         offset = val;
-        value.add(IntegerCache.valueOf(val));
+        value.set(val);
         startIndex = index + 2;
       }
     }
 
-    return value;
+    return new IntegerList(value);
   }
 }
