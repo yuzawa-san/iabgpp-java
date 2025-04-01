@@ -2,7 +2,6 @@ package com.iab.gpp.encoder.datatype.encoder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.BitSet;
 import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
