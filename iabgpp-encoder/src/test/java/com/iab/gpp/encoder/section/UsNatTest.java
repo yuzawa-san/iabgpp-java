@@ -14,7 +14,7 @@ public class UsNatTest {
   public void testEncode1() {
 
     UsNat usNat = new UsNat();
-    Assertions.assertEquals("BAAAAAAAAABA.QA", usNat.encode());
+    Assertions.assertEquals("CAAAAAAAAABA.QA", usNat.encode());
   }
 
   @Test
@@ -38,7 +38,7 @@ public class UsNatTest {
     usNat.setFieldValue(UsNatField.MSPA_SERVICE_PROVIDER_MODE, 2);
     usNat.setFieldValue(UsNatField.GPC, true);
 
-    Assertions.assertEquals("BVVVkkkkkpFY.YA", usNat.encode());
+    Assertions.assertEquals("CVVVkkkkkpFY.YA", usNat.encode());
   }
   
   @Test
@@ -174,7 +174,7 @@ public class UsNatTest {
     usNat.setFieldValue(UsNatField.MSPA_SERVICE_PROVIDER_MODE, 2);
     usNat.setFieldValue(UsNatField.GPC, true);
 
-    Assertions.assertEquals("BVVVkkkkkpFY.YA", usNat.encode());
+    Assertions.assertEquals("CVVVkkkkkpFY.YA", usNat.encode());
   }
 
   @Test
@@ -182,7 +182,7 @@ public class UsNatTest {
 
     UsNat usNat = new UsNat();
     usNat.setFieldValue(UsNatField.GPC_SEGMENT_INCLUDED, false);
-    Assertions.assertEquals("BAAAAAAAAABA", usNat.encode());
+    Assertions.assertEquals("CAAAAAAAAABA", usNat.encode());
   }
 
   @Test

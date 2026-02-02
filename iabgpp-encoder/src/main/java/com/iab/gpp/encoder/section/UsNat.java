@@ -10,7 +10,7 @@ import com.iab.gpp.encoder.segment.UsNatGpcSegment;
 public class UsNat extends EncodableSection<UsNatField> {
 
   public static final int ID = 7;
-  public static final int VERSION = 1;
+  public static final int VERSION = 2;
   public static final String NAME = "usnat";
 
   public UsNat() {
