@@ -9,11 +9,18 @@ abstract class AbstractLazilyEncodableSegment<E extends Enum<E> & FieldKey>
 
   protected final FieldNames<E> fieldNames;
   protected final Object[] values;
+  private boolean optional;
   private boolean dirty;
 
-  protected AbstractLazilyEncodableSegment(FieldNames<E> fieldNames) {
+  protected AbstractLazilyEncodableSegment(FieldNames<E> fieldNames, boolean optional) {
     this.fieldNames = fieldNames;
     this.values = new Object[fieldNames.size()];
+    this.optional = optional;
+  }
+
+  @Override
+  public final boolean isOptional() {
+    return optional;
   }
 
   @Override
