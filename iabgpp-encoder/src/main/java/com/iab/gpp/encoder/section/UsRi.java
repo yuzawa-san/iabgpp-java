@@ -6,7 +6,7 @@ import com.iab.gpp.encoder.segment.Base64Segment;
 
 public class UsRi extends AbstractUsSectionWithHeader<UsRiField> {
 
-  public static final int ID = 25;
+  public static final int ID = 27;
   public static final int VERSION = 1;
   public static final String NAME = "usin";
 
