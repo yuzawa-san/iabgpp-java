@@ -8,7 +8,7 @@ public class UsRi extends AbstractUsSectionWithHeader<UsRiField> {
 
   public static final int ID = 27;
   public static final int VERSION = 1;
-  public static final String NAME = "usin";
+  public static final String NAME = "usri";
 
   public UsRi() {
     super(
