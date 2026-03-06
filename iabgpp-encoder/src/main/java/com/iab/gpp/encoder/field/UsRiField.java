@@ -6,7 +6,7 @@ import com.iab.gpp.encoder.datatype.EncodableFixedInteger;
 import com.iab.gpp.encoder.datatype.EncodableFixedIntegerList;
 import com.iab.gpp.encoder.section.UsIn;
 
-public enum UsInField implements FieldKey {
+public enum UsRiField implements FieldKey {
   SECTION_ID(new EncodableFixedInteger<>("SectionID", 6, UsIn.ID)),
   VERSION(new EncodableFixedInteger<>("Version", 6, UsIn.VERSION)),
   SUB_SECTIONS(new EncodableFibonacciIntegerRange<>("SubSections")),
@@ -30,33 +30,33 @@ public enum UsInField implements FieldKey {
   SENSITIVE_DATA_PROCESSING(
       new EncodableFixedIntegerList<>("SensitiveDataProcessing", 2, 8, VALIDATOR_LIST_012));
 
-  private final DataType<UsInField, ?> type;
+  private final DataType<UsRiField, ?> type;
 
-  UsInField(DataType<UsInField, ?> type) {
+  UsRiField(DataType<UsRiField, ?> type) {
     this.type = type;
   }
 
   @Override
-  public DataType<UsInField, ?> getType() {
+  public DataType<UsRiField, ?> getType() {
     return type;
   }
 
-  public static final FieldNames<UsInField> USIN_HEADER_SEGMENT_FIELD_NAMES =
-      new FieldNames<>(UsInField.SECTION_ID, UsInField.VERSION, UsInField.SUB_SECTIONS);
+  public static final FieldNames<UsRiField> USRI_HEADER_SEGMENT_FIELD_NAMES =
+      new FieldNames<>(UsRiField.SECTION_ID, UsRiField.VERSION, UsRiField.SUB_SECTIONS);
 
-  public static final FieldNames<UsInField> USIN_CORE_SEGMENT_FIELD_NAMES =
+  public static final FieldNames<UsRiField> USRI_CORE_SEGMENT_FIELD_NAMES =
       new FieldNames<>(
-          UsInField.MSPA_VERSION,
-          UsInField.MSPA_COVERED_TRANSACTION,
-          UsInField.MSPA_MODE,
-          UsInField.PROCESSING_NOTICE,
-          UsInField.SALE_OPT_OUT_NOTICE,
-          UsInField.TARGETED_ADVERTISING_OPT_OUT_NOTICE,
-          UsInField.SALE_OPT_OUT,
-          UsInField.TARGETED_ADVERTISING_OPT_OUT,
-          UsInField.KNOWN_CHILD_SENSITIVE_DATA_CONSENTS,
-          UsInField.ADDITIONAL_DATA_PROCESSING_CONSENT);
+          UsRiField.MSPA_VERSION,
+          UsRiField.MSPA_COVERED_TRANSACTION,
+          UsRiField.MSPA_MODE,
+          UsRiField.PROCESSING_NOTICE,
+          UsRiField.SALE_OPT_OUT_NOTICE,
+          UsRiField.TARGETED_ADVERTISING_OPT_OUT_NOTICE,
+          UsRiField.SALE_OPT_OUT,
+          UsRiField.TARGETED_ADVERTISING_OPT_OUT,
+          UsRiField.KNOWN_CHILD_SENSITIVE_DATA_CONSENTS,
+          UsRiField.ADDITIONAL_DATA_PROCESSING_CONSENT);
 
-  public static final FieldNames<UsInField> USIN_SENSITIVE_DATA_CONSENTS_SEGMENT_FIELD_NAMES =
-      new FieldNames<>(UsInField.SENSITIVE_DATA_PROCESSING);
+  public static final FieldNames<UsRiField> USRI_SENSITIVE_DATA_CONSENTS_SEGMENT_FIELD_NAMES =
+      new FieldNames<>(UsRiField.SENSITIVE_DATA_PROCESSING);
 }

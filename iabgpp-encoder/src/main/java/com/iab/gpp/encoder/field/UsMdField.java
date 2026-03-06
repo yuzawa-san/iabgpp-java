@@ -1,12 +1,12 @@
 package com.iab.gpp.encoder.field;
 
 import com.iab.gpp.encoder.datatype.DataType;
+import com.iab.gpp.encoder.datatype.EncodableBoolean;
 import com.iab.gpp.encoder.datatype.EncodableFibonacciIntegerRange;
 import com.iab.gpp.encoder.datatype.EncodableFixedInteger;
-import com.iab.gpp.encoder.datatype.EncodableFixedIntegerList;
 import com.iab.gpp.encoder.section.UsIn;
 
-public enum UsInField implements FieldKey {
+public enum UsMdField implements FieldKey {
   SECTION_ID(new EncodableFixedInteger<>("SectionID", 6, UsIn.ID)),
   VERSION(new EncodableFixedInteger<>("Version", 6, UsIn.VERSION)),
   SUB_SECTIONS(new EncodableFibonacciIntegerRange<>("SubSections")),
@@ -22,41 +22,38 @@ public enum UsInField implements FieldKey {
   SALE_OPT_OUT(new EncodableFixedInteger<>("SaleOptOut", 2, 0, VALIDATOR_012)),
   TARGETED_ADVERTISING_OPT_OUT(
       new EncodableFixedInteger<>("TargetedAdvertisingOptOut", 2, 0, VALIDATOR_012)),
-  KNOWN_CHILD_SENSITIVE_DATA_CONSENTS(
-      new EncodableFixedInteger<>("KnownChildSensitiveDataConsents", 2, 0, VALIDATOR_012)),
   ADDITIONAL_DATA_PROCESSING_CONSENT(
       new EncodableFixedInteger<>("AdditionalDataProcessingConsent", 2, 0, VALIDATOR_012)),
+  
+  GPC_SUBSECTION_TYPE(new EncodableFixedInteger<>("GpcSubSectionType", 2, 1)),
+  GPC(new EncodableBoolean<>("Gpc", false));
+  
+  private final DataType<UsMdField, ?> type;
 
-  SENSITIVE_DATA_PROCESSING(
-      new EncodableFixedIntegerList<>("SensitiveDataProcessing", 2, 8, VALIDATOR_LIST_012));
-
-  private final DataType<UsInField, ?> type;
-
-  UsInField(DataType<UsInField, ?> type) {
+  UsMdField(DataType<UsMdField, ?> type) {
     this.type = type;
   }
 
   @Override
-  public DataType<UsInField, ?> getType() {
+  public DataType<UsMdField, ?> getType() {
     return type;
   }
 
-  public static final FieldNames<UsInField> USIN_HEADER_SEGMENT_FIELD_NAMES =
-      new FieldNames<>(UsInField.SECTION_ID, UsInField.VERSION, UsInField.SUB_SECTIONS);
+  public static final FieldNames<UsMdField> USMD_HEADER_SEGMENT_FIELD_NAMES =
+      new FieldNames<>(UsMdField.SECTION_ID, UsMdField.VERSION, UsMdField.SUB_SECTIONS);
 
-  public static final FieldNames<UsInField> USIN_CORE_SEGMENT_FIELD_NAMES =
+  public static final FieldNames<UsMdField> USMD_CORE_SEGMENT_FIELD_NAMES =
       new FieldNames<>(
-          UsInField.MSPA_VERSION,
-          UsInField.MSPA_COVERED_TRANSACTION,
-          UsInField.MSPA_MODE,
-          UsInField.PROCESSING_NOTICE,
-          UsInField.SALE_OPT_OUT_NOTICE,
-          UsInField.TARGETED_ADVERTISING_OPT_OUT_NOTICE,
-          UsInField.SALE_OPT_OUT,
-          UsInField.TARGETED_ADVERTISING_OPT_OUT,
-          UsInField.KNOWN_CHILD_SENSITIVE_DATA_CONSENTS,
-          UsInField.ADDITIONAL_DATA_PROCESSING_CONSENT);
+          UsMdField.MSPA_VERSION,
+          UsMdField.MSPA_COVERED_TRANSACTION,
+          UsMdField.MSPA_MODE,
+          UsMdField.PROCESSING_NOTICE,
+          UsMdField.SALE_OPT_OUT_NOTICE,
+          UsMdField.TARGETED_ADVERTISING_OPT_OUT_NOTICE,
+          UsMdField.SALE_OPT_OUT,
+          UsMdField.TARGETED_ADVERTISING_OPT_OUT,
+          UsMdField.ADDITIONAL_DATA_PROCESSING_CONSENT);
 
-  public static final FieldNames<UsInField> USIN_SENSITIVE_DATA_CONSENTS_SEGMENT_FIELD_NAMES =
-      new FieldNames<>(UsInField.SENSITIVE_DATA_PROCESSING);
+  public static final FieldNames<UsMdField> USMD_GPC_SEGMENT_FIELD_NAMES =
+      new FieldNames<>(UsMdField.GPC_SUBSECTION_TYPE, UsMdField.GPC);
 }

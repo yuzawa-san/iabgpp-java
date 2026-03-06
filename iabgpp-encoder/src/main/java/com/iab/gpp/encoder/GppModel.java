@@ -15,6 +15,9 @@ import com.iab.gpp.encoder.section.UsCt;
 import com.iab.gpp.encoder.section.UsDe;
 import com.iab.gpp.encoder.section.UsFl;
 import com.iab.gpp.encoder.section.UsIa;
+import com.iab.gpp.encoder.section.UsIn;
+import com.iab.gpp.encoder.section.UsKy;
+import com.iab.gpp.encoder.section.UsMd;
 import com.iab.gpp.encoder.section.UsMn;
 import com.iab.gpp.encoder.section.UsMt;
 import com.iab.gpp.encoder.section.UsNat;
@@ -22,6 +25,7 @@ import com.iab.gpp.encoder.section.UsNe;
 import com.iab.gpp.encoder.section.UsNh;
 import com.iab.gpp.encoder.section.UsNj;
 import com.iab.gpp.encoder.section.UsOr;
+import com.iab.gpp.encoder.section.UsRi;
 import com.iab.gpp.encoder.section.UsTn;
 import com.iab.gpp.encoder.section.UsTx;
 import com.iab.gpp.encoder.section.UsUt;
@@ -64,6 +68,10 @@ public class GppModel extends AbstractEncodable {
     constructors.add(UsNj::new);
     constructors.add(UsTn::new);
     constructors.add(UsMn::new);
+    constructors.add(UsIn::new);
+    constructors.add(UsMd::new);
+    constructors.add(UsKy::new);
+    constructors.add(UsRi::new);
 
     for (Supplier<EncodableSection<?>> constructor : constructors) {
       EncodableSection<?> prototype = constructor.get();

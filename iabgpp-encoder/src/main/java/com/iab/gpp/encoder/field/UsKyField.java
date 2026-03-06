@@ -6,7 +6,7 @@ import com.iab.gpp.encoder.datatype.EncodableFixedInteger;
 import com.iab.gpp.encoder.datatype.EncodableFixedIntegerList;
 import com.iab.gpp.encoder.section.UsIn;
 
-public enum UsInField implements FieldKey {
+public enum UsKyField implements FieldKey {
   SECTION_ID(new EncodableFixedInteger<>("SectionID", 6, UsIn.ID)),
   VERSION(new EncodableFixedInteger<>("Version", 6, UsIn.VERSION)),
   SUB_SECTIONS(new EncodableFibonacciIntegerRange<>("SubSections")),
@@ -30,33 +30,33 @@ public enum UsInField implements FieldKey {
   SENSITIVE_DATA_PROCESSING(
       new EncodableFixedIntegerList<>("SensitiveDataProcessing", 2, 8, VALIDATOR_LIST_012));
 
-  private final DataType<UsInField, ?> type;
+  private final DataType<UsKyField, ?> type;
 
-  UsInField(DataType<UsInField, ?> type) {
+  UsKyField(DataType<UsKyField, ?> type) {
     this.type = type;
   }
 
   @Override
-  public DataType<UsInField, ?> getType() {
+  public DataType<UsKyField, ?> getType() {
     return type;
   }
 
-  public static final FieldNames<UsInField> USIN_HEADER_SEGMENT_FIELD_NAMES =
-      new FieldNames<>(UsInField.SECTION_ID, UsInField.VERSION, UsInField.SUB_SECTIONS);
+  public static final FieldNames<UsKyField> USKY_HEADER_SEGMENT_FIELD_NAMES =
+      new FieldNames<>(UsKyField.SECTION_ID, UsKyField.VERSION, UsKyField.SUB_SECTIONS);
 
-  public static final FieldNames<UsInField> USIN_CORE_SEGMENT_FIELD_NAMES =
+  public static final FieldNames<UsKyField> USKY_CORE_SEGMENT_FIELD_NAMES =
       new FieldNames<>(
-          UsInField.MSPA_VERSION,
-          UsInField.MSPA_COVERED_TRANSACTION,
-          UsInField.MSPA_MODE,
-          UsInField.PROCESSING_NOTICE,
-          UsInField.SALE_OPT_OUT_NOTICE,
-          UsInField.TARGETED_ADVERTISING_OPT_OUT_NOTICE,
-          UsInField.SALE_OPT_OUT,
-          UsInField.TARGETED_ADVERTISING_OPT_OUT,
-          UsInField.KNOWN_CHILD_SENSITIVE_DATA_CONSENTS,
-          UsInField.ADDITIONAL_DATA_PROCESSING_CONSENT);
+          UsKyField.MSPA_VERSION,
+          UsKyField.MSPA_COVERED_TRANSACTION,
+          UsKyField.MSPA_MODE,
+          UsKyField.PROCESSING_NOTICE,
+          UsKyField.SALE_OPT_OUT_NOTICE,
+          UsKyField.TARGETED_ADVERTISING_OPT_OUT_NOTICE,
+          UsKyField.SALE_OPT_OUT,
+          UsKyField.TARGETED_ADVERTISING_OPT_OUT,
+          UsKyField.KNOWN_CHILD_SENSITIVE_DATA_CONSENTS,
+          UsKyField.ADDITIONAL_DATA_PROCESSING_CONSENT);
 
-  public static final FieldNames<UsInField> USIN_SENSITIVE_DATA_CONSENTS_SEGMENT_FIELD_NAMES =
-      new FieldNames<>(UsInField.SENSITIVE_DATA_PROCESSING);
+  public static final FieldNames<UsKyField> USKY_SENSITIVE_DATA_CONSENTS_SEGMENT_FIELD_NAMES =
+      new FieldNames<>(UsKyField.SENSITIVE_DATA_PROCESSING);
 }
