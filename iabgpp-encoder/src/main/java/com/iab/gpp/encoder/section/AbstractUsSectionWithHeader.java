@@ -40,7 +40,7 @@ public abstract class AbstractUsSectionWithHeader<E extends Enum<E> & FieldKey>
     IntegerSet subSections = getSubSections();
     for (int i = 1; i < size(); i++) {
       EncodableSegment<E> segment = getSegment(i);
-      if (!segment.isOptional() || segment.isDirty()) {
+      if (segment.shouldEncode()) {
         subSections.add(i - 1);
       }
     }

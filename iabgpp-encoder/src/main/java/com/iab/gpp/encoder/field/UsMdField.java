@@ -24,10 +24,10 @@ public enum UsMdField implements FieldKey {
       new EncodableFixedInteger<>("TargetedAdvertisingOptOut", 2, 0, VALIDATOR_012)),
   ADDITIONAL_DATA_PROCESSING_CONSENT(
       new EncodableFixedInteger<>("AdditionalDataProcessingConsent", 2, 0, VALIDATOR_012)),
-  
+
   GPC_SUBSECTION_TYPE(new EncodableFixedInteger<>("GpcSubSectionType", 2, 1)),
   GPC(new EncodableBoolean<>("Gpc", false));
-  
+
   private final DataType<UsMdField, ?> type;
 
   UsMdField(DataType<UsMdField, ?> type) {
