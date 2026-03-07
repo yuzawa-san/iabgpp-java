@@ -27,8 +27,10 @@ public final class FixedIntegerList extends AbstractList<Integer> implements Dir
   }
 
   public boolean isPresent() {
-    for (int i = 0; i < numElements; i++) {
-      if (getInt(i) > 0) {
+    int start = offset;
+    int end = start + elementBitStringLength * numElements;
+    for (int i = start; i < end; i++) {
+      if (bitSet.get(i)) {
         return true;
       }
     }
