@@ -47,7 +47,8 @@ public class GppModel extends AbstractEncodable {
   static {
     List<Supplier<EncodableSection<?>>> constructors = new ArrayList<>();
 
-    // register section constructors here
+    // ADDING A NEW SECTION:
+    // register section constructors here and add get*Section() method below
     constructors.add(TcfEuV2::new);
     constructors.add(TcfCaV1::new);
     constructors.add(UspV1::new);
@@ -269,6 +270,22 @@ public class GppModel extends AbstractEncodable {
 
   public UsMn getUsMnSection() {
     return (UsMn) getSection(UsMn.ID);
+  }
+
+  public UsIn getUsInSection() {
+    return (UsIn) getSection(UsIn.ID);
+  }
+
+  public UsKy getUsKySection() {
+    return (UsKy) getSection(UsKy.ID);
+  }
+
+  public UsMd getUsMdSection() {
+    return (UsMd) getSection(UsMd.ID);
+  }
+
+  public UsRi getUsRiSection() {
+    return (UsRi) getSection(UsRi.ID);
   }
 
   public List<Integer> getSectionIds() {
