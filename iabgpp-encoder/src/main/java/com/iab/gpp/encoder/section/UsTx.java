@@ -85,10 +85,6 @@ public class UsTx extends AbstractUsSectionWithGpc<UsTxField> {
     return (Integer) this.getFieldValue(UsTxField.MSPA_SERVICE_PROVIDER_MODE);
   }
 
-  public Integer getGpcSegmentType() {
-    return (Integer) this.getFieldValue(UsTxField.GPC_SEGMENT_TYPE);
-  }
-
   public Boolean getGpc() {
     return (Boolean) this.getFieldValue(UsTxField.GPC);
   }

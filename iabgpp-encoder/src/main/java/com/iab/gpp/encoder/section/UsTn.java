@@ -85,10 +85,6 @@ public class UsTn extends AbstractUsSectionWithGpc<UsTnField> {
     return (Integer) this.getFieldValue(UsTnField.MSPA_SERVICE_PROVIDER_MODE);
   }
 
-  public Integer getGpcSegmentType() {
-    return (Integer) this.getFieldValue(UsTnField.GPC_SEGMENT_TYPE);
-  }
-
   public Boolean getGpc() {
     return (Boolean) this.getFieldValue(UsTnField.GPC);
   }

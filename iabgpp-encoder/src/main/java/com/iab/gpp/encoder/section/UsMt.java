@@ -85,10 +85,6 @@ public class UsMt extends AbstractUsSectionWithGpc<UsMtField> {
     return (Integer) this.getFieldValue(UsMtField.MSPA_SERVICE_PROVIDER_MODE);
   }
 
-  public Integer getGpcSegmentType() {
-    return (Integer) this.getFieldValue(UsMtField.GPC_SEGMENT_TYPE);
-  }
-
   public Boolean getGpc() {
     return (Boolean) this.getFieldValue(UsMtField.GPC);
   }

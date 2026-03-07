@@ -81,10 +81,6 @@ public class UsCo extends AbstractUsSectionWithGpc<UsCoField> {
     return (Integer) this.getFieldValue(UsCoField.MSPA_SERVICE_PROVIDER_MODE);
   }
 
-  public Integer getGpcSegmentType() {
-    return (Integer) this.getFieldValue(UsCoField.GPC_SEGMENT_TYPE);
-  }
-
   public Boolean getGpc() {
     return (Boolean) this.getFieldValue(UsCoField.GPC);
   }

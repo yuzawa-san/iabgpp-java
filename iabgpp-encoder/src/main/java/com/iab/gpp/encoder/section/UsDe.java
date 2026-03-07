@@ -85,10 +85,6 @@ public class UsDe extends AbstractUsSectionWithGpc<UsDeField> {
     return (Integer) this.getFieldValue(UsDeField.MSPA_SERVICE_PROVIDER_MODE);
   }
 
-  public Integer getGpcSegmentType() {
-    return (Integer) this.getFieldValue(UsDeField.GPC_SEGMENT_TYPE);
-  }
-
   public Boolean getGpc() {
     return (Boolean) this.getFieldValue(UsDeField.GPC);
   }

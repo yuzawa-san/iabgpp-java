@@ -85,10 +85,6 @@ public class UsIa extends AbstractUsSectionWithGpc<UsIaField> {
     return (Integer) this.getFieldValue(UsIaField.MSPA_SERVICE_PROVIDER_MODE);
   }
 
-  public Integer getGpcSegmentType() {
-    return (Integer) this.getFieldValue(UsIaField.GPC_SEGMENT_TYPE);
-  }
-
   public Boolean getGpc() {
     return (Boolean) this.getFieldValue(UsIaField.GPC);
   }

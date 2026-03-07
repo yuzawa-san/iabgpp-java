@@ -85,10 +85,6 @@ public class UsNe extends AbstractUsSectionWithGpc<UsNeField> {
     return (Integer) this.getFieldValue(UsNeField.MSPA_SERVICE_PROVIDER_MODE);
   }
 
-  public Integer getGpcSegmentType() {
-    return (Integer) this.getFieldValue(UsNeField.GPC_SEGMENT_TYPE);
-  }
-
   public Boolean getGpc() {
     return (Boolean) this.getFieldValue(UsNeField.GPC);
   }
