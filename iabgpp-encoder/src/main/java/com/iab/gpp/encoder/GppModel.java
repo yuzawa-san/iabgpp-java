@@ -1,5 +1,6 @@
 package com.iab.gpp.encoder;
 
+import com.iab.gpp.encoder.datatype.IntegerSet;
 import com.iab.gpp.encoder.error.DecodingException;
 import com.iab.gpp.encoder.error.InvalidFieldException;
 import com.iab.gpp.encoder.field.FieldKey;
@@ -288,9 +289,9 @@ public class GppModel extends AbstractEncodable {
     return (UsRi) getSection(UsRi.ID);
   }
 
-  public List<Integer> getSectionIds() {
+  public IntegerSet getSectionIds() {
     ensureDecode();
-    return new ArrayList<>(header.getSectionsIds());
+    return header.getSectionsIds();
   }
 
   @Override
