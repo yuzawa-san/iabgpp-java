@@ -33,7 +33,7 @@ public class UsMd extends AbstractUsSectionWithHeader<UsMdField> {
 
   @Override
   public int getVersion() {
-    return UsMd.VERSION;
+    return (Integer) this.getFieldValue(UsMdField.VERSION);
   }
 
   @Override

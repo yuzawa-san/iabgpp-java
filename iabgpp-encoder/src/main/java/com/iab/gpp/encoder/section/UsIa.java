@@ -33,7 +33,7 @@ public class UsIa extends AbstractUsSectionWithGpc<UsIaField> {
 
   @Override
   public int getVersion() {
-    return UsIa.VERSION;
+    return (Integer) this.getFieldValue(UsIaField.VERSION);
   }
 
   @Override

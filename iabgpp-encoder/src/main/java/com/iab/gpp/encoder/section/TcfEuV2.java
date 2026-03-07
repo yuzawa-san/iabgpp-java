@@ -43,7 +43,7 @@ public class TcfEuV2 extends EncodableSection<TcfEuV2Field> {
 
   @Override
   public int getVersion() {
-    return TcfEuV2.VERSION;
+    return (Integer) this.getFieldValue(TcfEuV2Field.VERSION);
   }
 
   @Override

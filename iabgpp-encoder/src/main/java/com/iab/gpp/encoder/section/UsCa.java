@@ -33,7 +33,7 @@ public class UsCa extends AbstractUsSectionWithGpc<UsCaField> {
 
   @Override
   public int getVersion() {
-    return UsCa.VERSION;
+    return (Integer) this.getFieldValue(UsCaField.VERSION);
   }
 
   @Override

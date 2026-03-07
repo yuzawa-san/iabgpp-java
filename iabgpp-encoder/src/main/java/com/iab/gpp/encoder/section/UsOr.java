@@ -33,7 +33,7 @@ public class UsOr extends AbstractUsSectionWithGpc<UsOrField> {
 
   @Override
   public int getVersion() {
-    return UsOr.VERSION;
+    return (Integer) this.getFieldValue(UsOrField.VERSION);
   }
 
   @Override

@@ -33,7 +33,7 @@ public class UsDe extends AbstractUsSectionWithGpc<UsDeField> {
 
   @Override
   public int getVersion() {
-    return UsDe.VERSION;
+    return (Integer) this.getFieldValue(UsDeField.VERSION);
   }
 
   @Override

@@ -33,7 +33,7 @@ public class UsCo extends AbstractUsSectionWithGpc<UsCoField> {
 
   @Override
   public int getVersion() {
-    return UsCo.VERSION;
+    return (Integer) this.getFieldValue(UsCoField.VERSION);
   }
 
   @Override

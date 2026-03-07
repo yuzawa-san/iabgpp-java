@@ -34,7 +34,7 @@ public class UsKy extends AbstractUsSectionWithHeader<UsKyField> {
 
   @Override
   public int getVersion() {
-    return UsKy.VERSION;
+    return (Integer) this.getFieldValue(UsKyField.VERSION);
   }
 
   @Override

@@ -33,7 +33,7 @@ public class UsMn extends AbstractUsSectionWithGpc<UsMnField> {
 
   @Override
   public int getVersion() {
-    return UsMn.VERSION;
+    return (Integer) this.getFieldValue(UsMnField.VERSION);
   }
 
   @Override

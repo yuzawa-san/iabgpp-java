@@ -34,7 +34,7 @@ public class UsIn extends AbstractUsSectionWithHeader<UsInField> {
 
   @Override
   public int getVersion() {
-    return UsIn.VERSION;
+    return (Integer) this.getFieldValue(UsInField.VERSION);
   }
 
   @Override

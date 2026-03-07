@@ -34,7 +34,7 @@ public class UsRi extends AbstractUsSectionWithHeader<UsRiField> {
 
   @Override
   public int getVersion() {
-    return UsRi.VERSION;
+    return (Integer) this.getFieldValue(UsRiField.VERSION);
   }
 
   @Override
