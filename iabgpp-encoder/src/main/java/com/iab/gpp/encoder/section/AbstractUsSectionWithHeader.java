@@ -26,6 +26,7 @@ public abstract class AbstractUsSectionWithHeader<E extends Enum<E> & FieldKey>
     List<CharSequence> encodedSegments = SlicedCharSequence.split(encodedString, '.');
     getSegment(0).decode(encodedSegments.get(0));
     IntegerSet subSections = getSubSections();
+    subSections.addInt(0);
     PrimitiveIterator.OfInt it = subSections.iterator();
     while (it.hasNext()) {
       int subSectionIndex = 1 + it.nextInt();
@@ -38,13 +39,14 @@ public abstract class AbstractUsSectionWithHeader<E extends Enum<E> & FieldKey>
     int size = size();
     List<CharSequence> encodedSegments = new ArrayList<>(size);
     IntegerSet subSections = getSubSections();
-    for (int i = 1; i < size(); i++) {
+    for (int i = 2; i < size(); i++) {
       EncodableSegment<E> segment = getSegment(i);
       if (segment.shouldEncode()) {
         subSections.add(i - 1);
       }
     }
     encodedSegments.add(getSegment(0).encodeCharSequence());
+    encodedSegments.add(getSegment(1).encodeCharSequence());
     PrimitiveIterator.OfInt it = subSections.iterator();
     while (it.hasNext()) {
       int subSectionIndex = 1 + it.nextInt();

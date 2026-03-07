@@ -4,11 +4,11 @@ import com.iab.gpp.encoder.datatype.DataType;
 import com.iab.gpp.encoder.datatype.EncodableFibonacciIntegerRange;
 import com.iab.gpp.encoder.datatype.EncodableFixedInteger;
 import com.iab.gpp.encoder.datatype.EncodableFixedIntegerList;
-import com.iab.gpp.encoder.section.UsIn;
+import com.iab.gpp.encoder.section.UsKy;
 
 public enum UsKyField implements FieldKey {
-  SECTION_ID(new EncodableFixedInteger<>("SectionID", 6, UsIn.ID)),
-  VERSION(new EncodableFixedInteger<>("Version", 6, UsIn.VERSION)),
+  SECTION_ID(new EncodableFixedInteger<>("SectionID", 6, UsKy.ID)),
+  VERSION(new EncodableFixedInteger<>("Version", 6, UsKy.VERSION)),
   SUB_SECTIONS(new EncodableFibonacciIntegerRange<>("SubSections")),
 
   MSPA_VERSION(new EncodableFixedInteger<>("MspaVersion", 6, 0)),

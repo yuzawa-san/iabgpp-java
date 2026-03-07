@@ -4,11 +4,11 @@ import com.iab.gpp.encoder.datatype.DataType;
 import com.iab.gpp.encoder.datatype.EncodableBoolean;
 import com.iab.gpp.encoder.datatype.EncodableFibonacciIntegerRange;
 import com.iab.gpp.encoder.datatype.EncodableFixedInteger;
-import com.iab.gpp.encoder.section.UsIn;
+import com.iab.gpp.encoder.section.UsMd;
 
 public enum UsMdField implements FieldKey {
-  SECTION_ID(new EncodableFixedInteger<>("SectionID", 6, UsIn.ID)),
-  VERSION(new EncodableFixedInteger<>("Version", 6, UsIn.VERSION)),
+  SECTION_ID(new EncodableFixedInteger<>("SectionID", 6, UsMd.ID)),
+  VERSION(new EncodableFixedInteger<>("Version", 6, UsMd.VERSION)),
   SUB_SECTIONS(new EncodableFibonacciIntegerRange<>("SubSections")),
 
   MSPA_VERSION(new EncodableFixedInteger<>("MspaVersion", 6, 0)),
