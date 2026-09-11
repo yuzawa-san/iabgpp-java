@@ -397,7 +397,7 @@ public class GppModelTest {
 
     String gppString = gppModel.encode();
     Assertions.assertEquals(
-        "DBACOeA~CPSG_8APSG_8ANwAAAENAwCAAAAAAAAAAAAAAAAAAAAA.IAAA~BPSG_8APSG_8AAyACAENGdCgf_gfgAfgfgBgABABAAABAB4AACACAAA.fHHHA4444ao~1YNN",
+        "DBACOeA~CPSG_8APSG_8ANwAAAENAwCAAAAAAAAAAAAAAAAAAAAA.IAAA~BPSG_8APSG_8AAyACAENGdCg_fA_AA_A_ABgABABAAABAB4AACACAAA.eOOOBxxxwcQ~1YNN",
         gppString);
 
     Assertions.assertEquals(4, gppString.split("~").length);
@@ -824,12 +824,10 @@ public class GppModelTest {
   public void testConsistency() {
     GppModel fromObjectModel = new GppModel();
 
-    fromObjectModel.setFieldValue(
-        TcfEuV2.NAME, TcfEuV2Field.PURPOSE_CONSENTS, Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
-    fromObjectModel.setFieldValue(
-        TcfEuV2.NAME,
-        TcfEuV2Field.VENDOR_CONSENTS,
-        Arrays.asList(32, 128, 81, 210, 755, 21, 173, 238));
+    Set<Integer> purposeConsents = Set.of(1, 2, 4, 5, 6, 8, 9);
+    fromObjectModel.setFieldValue(TcfEuV2.NAME, TcfEuV2Field.PURPOSE_CONSENTS, purposeConsents);
+    Set<Integer> vendorConsents = Set.of(32, 128, 81, 210, 755, 21, 173, 238);
+    fromObjectModel.setFieldValue(TcfEuV2.NAME, TcfEuV2Field.VENDOR_CONSENTS, vendorConsents);
 
     Assertions.assertEquals(
         fromObjectModel.getSection(TcfEuV2.NAME).encode(),
@@ -839,11 +837,9 @@ public class GppModelTest {
     GppModel decodedModel = new GppModel(fromObjectModel.encode());
 
     Assertions.assertEquals(
-        Set.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
-        decodedModel.getFieldValue(TcfEuV2.NAME, TcfEuV2Field.PURPOSE_CONSENTS));
+        purposeConsents, decodedModel.getFieldValue(TcfEuV2.NAME, TcfEuV2Field.PURPOSE_CONSENTS));
     Assertions.assertEquals(
-        Set.of(21, 32, 81, 128, 173, 210, 238, 755),
-        decodedModel.getFieldValue(TcfEuV2.NAME, TcfEuV2Field.VENDOR_CONSENTS));
+        vendorConsents, decodedModel.getFieldValue(TcfEuV2.NAME, TcfEuV2Field.VENDOR_CONSENTS));
   }
 
   @Test

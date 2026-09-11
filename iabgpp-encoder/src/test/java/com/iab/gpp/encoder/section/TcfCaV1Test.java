@@ -66,7 +66,7 @@ public class TcfCaV1Test {
         ZonedDateTime.of(2022, 1, 1, 0, 0, 0, 0, ZoneId.of("UTC")).toInstant());
 
     Assertions.assertEquals(
-        "BPSG_8APSG_8AAyACAENGdCgf_gfgAfgfgBgABABAAABAB4AACACAAA.fHHHA4444ao", tcfCaV1.encode());
+        "BPSG_8APSG_8AAyACAENGdCg_fA_AA_A_ABgABABAAABAB4AACACAAA.eOOOBxxxwcQ", tcfCaV1.encode());
   }
 
   @Test
