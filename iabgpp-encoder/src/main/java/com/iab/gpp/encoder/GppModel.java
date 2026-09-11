@@ -40,7 +40,7 @@ import java.util.function.Supplier;
 
 public class GppModel extends AbstractEncodable {
 
-  // NOTE: we genrally use concrete types to avoid the cost of interface calls
+  // NOTE: we generally use concrete types to avoid the cost of interface calls
   private static final HashMap<Integer, Supplier<EncodableSection<?>>> SECTION_ID_TO_CONSTRUCTOR =
       new HashMap<>();
   private static final HashMap<String, Integer> SECTION_NAME_TO_ID = new HashMap<>();
@@ -307,13 +307,13 @@ public class GppModel extends AbstractEncodable {
 
   @Override
   protected void doDecode(CharSequence str) {
-    if (str == null || str.isEmpty() || (str.charAt(0) == 'D' && str.charAt(1) == 'B')) {
+    if (str == null || str.length() == 0 || (str.charAt(0) == 'D' && str.charAt(1) == 'B')) {
       if (!sections.isEmpty()) {
         sections.clear();
         header.getSectionsIds().clear();
       }
 
-      if (str != null && !str.isEmpty()) {
+      if (str != null && str.length() != 0) {
         List<CharSequence> encodedSections = SlicedCharSequence.split(str, '~');
         header.decode(encodedSections.get(0));
 
@@ -397,7 +397,7 @@ public class GppModel extends AbstractEncodable {
     for (Integer sectionId : header.getSectionsIds()) {
       EncodableSection<?> section = sections.get(sectionId);
       if (section != null) {
-        section.setDirty(true);
+        section.setDirty(dirty);
       }
     }
   }
