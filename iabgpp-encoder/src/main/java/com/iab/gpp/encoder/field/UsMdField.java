@@ -25,7 +25,7 @@ public enum UsMdField implements FieldKey {
   ADDITIONAL_DATA_PROCESSING_CONSENT(
       new EncodableFixedInteger<>("AdditionalDataProcessingConsent", 2, 0, VALIDATOR_012)),
 
-  GPC_SUBSECTION_TYPE(new EncodableFixedInteger<>("GpcSubSectionType", 2, 1)),
+  SUBSECTION_TYPE(new EncodableFixedInteger<>("SubSectionType", 2, 1)),
   GPC(new EncodableBoolean<>("Gpc", false));
 
   private final DataType<UsMdField, ?> type;
@@ -55,5 +55,5 @@ public enum UsMdField implements FieldKey {
           UsMdField.ADDITIONAL_DATA_PROCESSING_CONSENT);
 
   public static final FieldNames<UsMdField> USMD_GPC_SEGMENT_FIELD_NAMES =
-      new FieldNames<>(UsMdField.GPC_SUBSECTION_TYPE, UsMdField.GPC);
+      new FieldNames<>(UsMdField.SUBSECTION_TYPE, UsMdField.GPC);
 }
