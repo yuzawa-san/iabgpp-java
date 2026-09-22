@@ -25,8 +25,8 @@ public abstract class AbstractUsSectionWithHeader<E extends Enum<E> & FieldKey>
   protected final void doDecode(CharSequence encodedString) {
     List<CharSequence> encodedSegments = SlicedCharSequence.split(encodedString, '.');
     getSegment(0).decode(encodedSegments.get(0));
+    getSegment(1).decode(encodedSegments.get(1));
     IntegerSet subSections = getSubSections();
-    subSections.addInt(0);
     PrimitiveIterator.OfInt it = subSections.iterator();
     while (it.hasNext()) {
       int subSectionIndex = 1 + it.nextInt();
