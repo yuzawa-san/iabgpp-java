@@ -108,6 +108,9 @@ public class UsMdTest {
     Assertions.assertEquals(1, usMd.getMspaMode());
     Assertions.assertEquals(1, usMd.getMspaVersion());
     Assertions.assertEquals(true, usMd.getGpc());
+
+    usMd.setDirty(true);
+    Assertions.assertEquals("YBABYA.BVVU.YA", usMd.encode());
   }
 
   @Test()

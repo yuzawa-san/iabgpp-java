@@ -1,6 +1,7 @@
 package com.iab.gpp.encoder.section;
 
 import com.iab.gpp.encoder.datatype.IntegerSet;
+import com.iab.gpp.encoder.error.DecodingException;
 import com.iab.gpp.encoder.field.FieldKey;
 import com.iab.gpp.encoder.segment.EncodableSegment;
 import java.util.ArrayList;
@@ -24,6 +25,9 @@ public abstract class AbstractUsSectionWithHeader<E extends Enum<E> & FieldKey>
   @Override
   protected final void doDecode(CharSequence encodedString) {
     List<CharSequence> encodedSegments = SlicedCharSequence.split(encodedString, '.');
+    if (encodedSegments.size() < 2) {
+      throw new DecodingException("Section contains too few segments");
+    }
     getSegment(0).decode(encodedSegments.get(0));
     getSegment(1).decode(encodedSegments.get(1));
     IntegerSet subSections = getSubSections();
