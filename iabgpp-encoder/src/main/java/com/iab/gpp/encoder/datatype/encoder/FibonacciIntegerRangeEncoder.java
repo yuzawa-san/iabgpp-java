@@ -47,6 +47,11 @@ public class FibonacciIntegerRangeEncoder {
     }
   }
 
+  @Deprecated
+  public static IntegerSet decode(BitString reader) throws DecodingException {
+    return decode(reader, true);
+  }
+
   public static IntegerSet decode(BitString reader, boolean strict) throws DecodingException {
     int count = reader.readInt(12);
     IntegerSet value = new IntegerSet();
